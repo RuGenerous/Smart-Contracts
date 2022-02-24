@@ -162,7 +162,7 @@ interface IERC20 {
 contract GTFORUG is Ownable {
   using SafeMath for uint256;
 
-  address constant SB = 0xb8EF3a190b68175000B74B4160d325FD5024760e;
+  address constant RUG = 0xb8EF3a190b68175000B74B4160d325FD5024760e;
   address constant USDC = 0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664;
   uint256 public RFV = 200;
 
