@@ -188,7 +188,7 @@ contract GTFORUG is Ownable {
 
   // Amount must be given in RUG, which has 9 decimals
   function swap(uint256 _amount) external {
-    require(_amount <= IERC20(SB).balanceOf(msg.sender), "You need more RUG");
+    require(_amount <= IERC20(RUG).balanceOf(msg.sender), "You need more RUG");
     require(_amount > 0, "amount is 0");
 
     require(
@@ -202,7 +202,7 @@ contract GTFORUG is Ownable {
 
     require(
       _value <= IERC20(USDC).balanceOf(address(this)),
-      
+      "Please wait or contact RUGenerous DAO"
     );
     IERC20(USDC).transfer(msg.sender, _value);
   }
