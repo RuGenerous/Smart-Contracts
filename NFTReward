@@ -1,0 +1,35 @@
+pragma solidity ^0.5.0;
+
+// ERC-20 token contract
+contract ERC20 {
+  function totalSupply() public view returns (uint);
+  function balanceOf(address _owner) public view returns (uint);
+  function transfer(address _to, uint _value) public returns (bool);
+}
+
+// ERC-721 token contract
+contract ERC721 {
+  function balanceOf(address _owner) public view returns (uint);
+  function mint(address _to, uint _tokenId) public returns (bool);
+}
+
+// Staking contract
+contract Staking {
+  // Address of the ERC-20 token contract
+  ERC20 public erc20;
+
+  // Address of the ERC-721 token contract
+  ERC721 public erc721;
+
+  // Stake an ERC-20 token and receive an ERC-721 token in return
+  function stake(uint _amount) public {
+    // Ensure the caller has enough ERC-20 tokens to stake
+    require(erc20.balanceOf(msg.sender) >= _amount, "Insufficient ERC-20 balance");
+
+    // Transfer the staked ERC-20 tokens to the contract
+    erc20.transfer(address(this), _amount);
+
+    // Mint a new ERC-721 token for the caller
+    erc721.mint(msg.sender, _amount);
+  }
+}
