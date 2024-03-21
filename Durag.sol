@@ -765,7 +765,7 @@ contract DURAG is ERC20 {
     function wrap( uint _amount ) external returns ( uint ) {
         IERC20( DURAG ).transferFrom( msg.sender, address(this), _amount );
         
-        uint value = RUGToDUrAG( _amount );
+        uint value = RUGToDURAG( _amount );
         _mint( msg.sender, value );
         return value;
     }
